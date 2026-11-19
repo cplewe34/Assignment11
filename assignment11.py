@@ -31,10 +31,10 @@ print("Current Status:", game["Status"])
 
 #user inputs if they are playing the game or not 
 while True:
-    new_status = input("Enter a new status (Completed or Playing or Dropped):\n").strip().capitalize()
-    if new_status == "Completed" or new_status == "Playing" or new_status == "Dropped":
+    new_status = input("Enter a new status (Backlog or Completed or Playing or Dropped):\n").strip().capitalize()
+    if  new_status == "Backlog" or new_status == "Completed" or new_status == "Playing" or new_status == "Dropped":
         break
-    print("Invalid status. Please enter Completed or Playing or Dropped.")
+    print("Invalid status. Please enter Backlog or Completed or Playing or Dropped.")
 
 #updates if the user is playing the game or not
 df.at[df.index[row_number], "Status"] = new_status
@@ -49,7 +49,7 @@ print("Recommended Games:")
 recommended = df.query("Recommended == 'Yes'")
 print(recommended[["Title", "Platform", "Price", "Rating"]])
 
-#imports all data to new dataframe
+#saves updated data to new dataframe
 df.to_csv("video_games_cleaned.csv", index=False)
 
 print("The catalog has been updated.")
